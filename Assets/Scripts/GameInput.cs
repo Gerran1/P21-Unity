@@ -28,4 +28,11 @@ public class GameInput : MonoBehaviour
 
         return inputVector;
     }
+
+    public float GetSprint()
+    {
+        float inputSprint = inputActions.Player.Sprint.ReadValue<float>();
+
+        return inputSprint;
+    }
 }

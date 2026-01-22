@@ -594,7 +594,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0d1f12e2d3eba0a468bccbd75b9e650e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -635,8 +635,8 @@ Transform:
   m_GameObject: {fileID: 547217088}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.02954, y: 2.88, z: 10.3}
-  m_LocalScale: {x: 24.205, y: 9.6575, z: 1}
+  m_LocalPosition: {x: -2.61, y: 2.88, z: 10.3}
+  m_LocalScale: {x: 36.721405, y: 9.6575, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -686,12 +686,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce276d8a4fc9594481db654fa3a96ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  SprintSpeed: 10
   gameInput: {fileID: 1079495262}
   speed: 10
   rotationSpeed: 10
   counterMask:
     serializedVersion: 2
     m_Bits: 64
+  selectedCounter: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

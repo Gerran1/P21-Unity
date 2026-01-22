@@ -6,16 +6,19 @@ public class PlayerAnimation : MonoBehaviour
     private Player player;
 
     private const string ISWALKING = "IsWalking";
+    private const string ISSPRINT = "IsSprint";
     private Animator animator;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         animator.SetBool(ISWALKING, false);
+        animator.SetBool(ISSPRINT, false);
     }
 
     private void Update()
     {
         animator.SetBool(ISWALKING, player.IsWalking);
+        animator.SetBool(ISSPRINT, player.IsSprint);
     }
 }

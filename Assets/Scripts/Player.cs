@@ -23,7 +23,12 @@ public class Player : MonoBehaviour
         public ClearCounter selectedCounter;
 
     }
-    
+
+
+
+    [SerializeField]
+    private float SprintSpeed = 10f;
+
     [SerializeField]
     private GameInput gameInput;
 
@@ -42,6 +47,8 @@ public class Player : MonoBehaviour
     private Vector3 lastInteractionDir;
 
     public bool IsWalking { get; private set; }
+
+    public bool IsSprint { get; private set; }
 
     private void Start()
     {
@@ -94,6 +101,8 @@ public class Player : MonoBehaviour
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
+        float inputSprint = gameInput.GetSprint();
+
         float playerRadius = 0.7f;
         float playerHeight = 2f;
         float moveDist = speed * Time.deltaTime;
@@ -102,6 +111,7 @@ public class Player : MonoBehaviour
             playerRadius, moveDir, moveDist);
 
         IsWalking = moveDir != Vector3.zero;
+        IsSprint = inputSprint != 0f;
 
         if (!canMove)
         {
@@ -139,6 +149,14 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             transform.position += speed * moveDir * Time.deltaTime;
+        }
+        if (IsWalking && IsSprint)
+        {
+            transform.position += SprintSpeed * moveDir * Time.deltaTime;
+        }
+        if (!IsWalking && IsSprint)
+        {
+            IsSprint = false;
         }
 
         transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
