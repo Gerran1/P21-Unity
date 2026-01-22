@@ -170,9 +170,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void SetSelectedCounter(ClearCounter selectedCounter)
+    private void SetSelectedCounter(ClearCounter clearCounter)
     {
-        this.selectedCounter = selectedCounter;
+        selectedCounter = clearCounter;
 
         OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedeventArgs
         {
