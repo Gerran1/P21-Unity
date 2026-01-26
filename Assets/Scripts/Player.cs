@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null)
         {
             Debug.LogError("На уровне больше одного игрока! Синглтон сломался");
         }
