@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     public class OnSelectedCounterChangedeventArgs : EventArgs
     {
-        public ClearCounter selectedCounter;
+        public BaseCounter selectedCounter;
 
     }
 
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private LayerMask counterMask;
 
     [SerializeField]
-    private ClearCounter selectedCounter;
+    private BaseCounter selectedCounter;
 
     private Vector3 lastInteractionDir;
 
@@ -78,13 +78,13 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         if (Physics.Raycast(transform.position, lastInteractionDir,
             out RaycastHit raycastHit, interactDistance, counterMask)) //луч зрения
         {
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
+            if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))
             {
                 // Has ClearCounter
 
-                if (clearCounter != selectedCounter)
+                if (baseCounter != selectedCounter)
                 {
-                    SetSelectedCounter(clearCounter);
+                    SetSelectedCounter(baseCounter);
                 }
             }
             else
@@ -173,9 +173,9 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         }
     }
 
-    private void SetSelectedCounter(ClearCounter clearCounter)
+    private void SetSelectedCounter(BaseCounter baseCounter)
     {
-        selectedCounter = clearCounter;
+        selectedCounter = baseCounter;
 
         OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedeventArgs
         {
