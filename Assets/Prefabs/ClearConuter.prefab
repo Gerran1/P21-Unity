@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f133cea1ea63e488c3058288d1aa1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectedCounterVisual
-  baseCounter: {fileID: 0}
+  baseCounter: {fileID: 7639537204085603082}
   visualGameObjects:
   - {fileID: 6303710826036117085}
 --- !u!4 &2091161815819655609 stripped
@@ -283,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cda16ef2f368f349aad66b27a9c4f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClearCounter
-  kitchenObjectSO: {fileID: 0}
   counterTopPoint: {fileID: 8863570167596940184}
 --- !u!4 &8863570167596940184 stripped
 Transform:

@@ -78,10 +78,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         if (Physics.Raycast(transform.position, lastInteractionDir,
             out RaycastHit raycastHit, interactDistance, counterMask)) //луч зрения
         {
+            Debug.Log("spotted");
             if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))
             {
-                // Has ClearCounter
-
+              
                 if (baseCounter != selectedCounter)
                 {
                     SetSelectedCounter(baseCounter);
