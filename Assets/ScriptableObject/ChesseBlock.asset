@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382c19d61014076428e9d6ccbc7f23cf, type: 3}
   m_Name: ChesseBlock
   m_EditorClassIdentifier: Assembly-CSharp::KitchenObjectSO
-  prefab: {fileID: 7031250746897647057, guid: 6f7f4e0fdb0c20b40b28916be909af97, type: 3}
+  prefab: {fileID: 641559513668531586, guid: 80e28fe930fe0284f9634518407e83f6, type: 3}
   sprite: {fileID: 21300000, guid: da2d04fe27b94e34ea0b624569b48a6f, type: 3}
   objectName: 
