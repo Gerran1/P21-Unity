@@ -1,12 +1,24 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CuttingCounter : BaseCounter
 {
     [SerializeField]
     private CuttingRecipeSO[] cuttingRecipeSOArray;
 
+    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+    public class OnProgressChangedEventArgs : EventArgs
+    {
+        public float progressNormalized;
+    }
+
     private int cuttingProgress;
 
+    /// <summary>
+    /// проверяет есть ли какой-то предмет на тумбе и в зависимости от этого проверяет есть ли предмет в руках у игрока
+    /// </summary>
+    /// <param name="player">игрок</param>
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -19,6 +31,11 @@ public class CuttingCounter : BaseCounter
                     //у игрока есть объект в руках
                     player.GetKitchenObject().SetKitchenObjectParent(this);
                     cuttingProgress = 0;
+
+                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                    {
+                        progressNormalized = 0
+                    });
                 }
             }
         }
@@ -45,6 +62,11 @@ public class CuttingCounter : BaseCounter
 
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
+            OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+            {
+                progressNormalized = (float) cuttingProgress / cuttingRecipeSO.cuttingProgressMax
+            });
+
             if (cuttingProgress >= cuttingRecipeSO.cuttingProgressMax)
             {
                 KitchenObjectSO cutKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
@@ -56,6 +78,12 @@ public class CuttingCounter : BaseCounter
         }
     }
 
+
+    /// <summary>
+    /// принимает объект для нарезки и достает из рецепта результат нарезки
+    /// </summary>
+    /// <param name="inputKitchenObjectSO">обьект для нарезки</param>
+    /// <returns>нарезанная версия</returns>
     private KitchenObjectSO GetOutputForInput(KitchenObjectSO inputKitchenObjectSO)
     {
         CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSO);
