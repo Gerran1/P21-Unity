@@ -28,12 +28,12 @@ public class SelectedCounterVisual : MonoBehaviour
 
     private void Show()
     {
-      
         foreach(var visualGameObject in visualGameObjects)
         {
             visualGameObject.SetActive(true);
         }
     }
+
     private void Hide()
     {
         foreach (var visualGameObject in visualGameObjects)

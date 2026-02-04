@@ -8,6 +8,7 @@ public class CuttingCounter : BaseCounter
     private CuttingRecipeSO[] cuttingRecipeSOArray;
 
     public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+
     public class OnProgressChangedEventArgs : EventArgs
     {
         public float progressNormalized;

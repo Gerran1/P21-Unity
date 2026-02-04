@@ -21,7 +21,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public class OnSelectedCounterChangedeventArgs : EventArgs
     {
         public BaseCounter selectedCounter;
-
     }
 
     [SerializeField] 
