@@ -5,6 +5,7 @@ public class GameInput : MonoBehaviour
 {
     public event EventHandler InteractAlternate;
     public event EventHandler OnInteractAction;
+    public event EventHandler Desh;
 
     private PlayerInputActions inputActions;
 
@@ -15,6 +16,7 @@ public class GameInput : MonoBehaviour
 
         inputActions.Player.Interact.performed += Interact_performed;
         inputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
+        inputActions.Player.Desh.performed += Desh_performed;
     }
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -25,6 +27,11 @@ public class GameInput : MonoBehaviour
     private void InteractAlternate_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         InteractAlternate?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Desh_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        Desh?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector2 GetMovementVectorNormalized()

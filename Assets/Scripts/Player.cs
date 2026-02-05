@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class Player : MonoBehaviour, IKitchenObjectParent
 {
@@ -52,10 +53,33 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     public bool IsSprint { get; private set; }
 
+    public bool IsDeshing { get; private set; }
+
     private void Start()
     {
         gameInput.OnInteractAction += GameInput_OnInteractAction;
         gameInput.InteractAlternate += GameInput_InteractAlternate;
+        gameInput.Desh += GameInput_Desh;
+    }
+
+    private void GameInput_Desh(object sender, EventArgs e)
+    {
+        if (IsWalking == true)
+        {
+            StartCoroutine(DeshCoroutine());
+        }
+    }
+
+    private IEnumerator DeshCoroutine()
+    {
+        IsDeshing = true;
+        float originalSpeed = speed;
+
+        speed += 100f;
+        yield return new WaitForSeconds(0.1f);
+
+        speed = originalSpeed;
+        IsDeshing = false;
     }
 
     private void Update()
