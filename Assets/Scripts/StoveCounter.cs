@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using static CuttingCounter;
 
-public class StoveCounter : BaseCounter
+public class StoveCounter : BaseCounter, IHasProgress
 {
     public enum State
     {
@@ -13,6 +13,7 @@ public class StoveCounter : BaseCounter
     }
 
     public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
 
     public class OnStateChangedEventArgs : EventArgs
     {

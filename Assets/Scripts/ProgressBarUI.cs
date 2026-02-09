@@ -5,12 +5,19 @@ using static CuttingCounter;
 
 public class ProgressBarUI : MonoBehaviour
 {
-    [SerializeField] private CuttingCounter cuttingCounter;
     [SerializeField] private Image barImage;
+    [SerializeField] private IHasProgress hasProgress;
+    [SerializeField] private GameObject hasProgressGameObject;
 
     private void Start()
     {
-        cuttingCounter.OnProgressChanged += CuttingCounter_OnProgressChanged;
+        hasProgress = hasProgressGameObject.GetComponent<IHasProgress>();
+        if (hasProgress != null)
+        {
+            Debug.LogError("GameObject " + hasProgressGameObject + "не имеет компонента, который имплементирует IHasProgress");
+        }
+
+        hasProgress.OnProgressChanged += CuttingCounter_OnProgressChanged;
         Hide();
     }
 
